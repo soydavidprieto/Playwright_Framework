@@ -15,7 +15,8 @@ jobs:
           pip install -r requirements.txt
           python -m playwright install --with-deps
           pytest tests/ --html=reports/report.html --self-contained-html --junitxml=reports/results.xml
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
+
         with:
           name: html-report
           path: reports/report.html
