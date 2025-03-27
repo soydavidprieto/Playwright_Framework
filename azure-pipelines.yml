@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  PIP_CACHE_DIR: $(Pipeline.Workspace)/.pip
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.11'
+    addToPath: true
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+    python -m playwright install --with-deps
+  displayName: 'Install dependencies'
+
+- script: |
+    pytest tests/ --junitxml=reports/results.xml
+  displayName: 'Run tests with JUnit XML reporting'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: 'reports/results.xml'
+    testRunTitle: 'Playwright QA Test Results'
+    mergeTestResults: true
