@@ -23,3 +23,8 @@ def page(context) -> Page: # type: ignore
     page = context.new_page()
     yield page
     page.close()
+    
+@pytest.fixture(scope="function")
+def context(browser):
+    # Desactiva validación de certificado SSL
+    return browser.new_context(ignore_https_errors=True)

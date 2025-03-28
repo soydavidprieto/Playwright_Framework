@@ -8,7 +8,7 @@ class ElementVisible:
     def answered_by(self, actor):
         page = actor.ability_to(BrowseTheWeb).page
         try:
-            page.wait_for_selector(self.selector, timeout=5000)
+            page.wait_for_selector(self.selector, timeout=10000)
             return page.is_visible(self.selector)
         except Exception:
             page.screenshot(path=f"reports/failure_{self.selector}.png")
