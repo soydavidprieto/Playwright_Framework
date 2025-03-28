@@ -1,26 +1,16 @@
 # config/config.py
-from dataclasses import dataclass
 from dotenv import load_dotenv
 import os
 
-# Load variables from .env
 load_dotenv()
 
-@dataclass
 class Settings:
-    env: str
-    base_url: str
-    headless: bool
-    timeout: int
+    def __init__(self):
+        self.env = os.getenv("ENV", "staging")
+        self.base_url = os.getenv("BASE_URL", "https://opensource-demo.orangehrmlive.com")
+        self.headless = os.getenv("HEADLESS", "true").lower() == "true"
+        self.timeout = int(os.getenv("TIMEOUT", "10000"))
+        self.login_user = os.getenv("LOGIN_USER")
+        self.login_pass = os.getenv("LOGIN_PASS")
 
-    @staticmethod
-    def from_env() -> "Settings":
-        return Settings(
-            env=os.getenv("ENV", "staging"),
-            base_url=os.getenv("BASE_URL", "http://localhost:3000"),
-            headless=os.getenv("HEADLESS", "true").lower() == "true",
-            timeout=int(os.getenv("TIMEOUT", "10000")),
-        )
-
-# Global settings instance
-settings = Settings.from_env()
+settings = Settings()

@@ -1,11 +1,13 @@
-# tests/features/login.feature
-Feature: Login OrangeHRM
+Feature: Login validation for known and unknown users
 
-  Scenario: Usuario válido puede acceder al sistema
-    Given que el usuario accede a la página de login
-    When ingresa el usuario "Admin" y la contraseña "admin123"
-    Then debería ver el dashboard
+  Scenario Outline: Login with different user types
+    Given the user is on the login page
+    When they log in as "<user_type>"
+    Then the system should respond appropriately for "<user_type>"
 
   Examples:
-    | username | password  |
-    | Admin    | admin123  |
+    | user_type |
+    | default   |
+    | manager   |
+    | readonly  |
+    | invalid   |

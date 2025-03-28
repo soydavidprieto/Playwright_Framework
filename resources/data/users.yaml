@@ -1,0 +1,13 @@
+users:
+  default:
+    password: admin123
+    username: Admin
+  manager:
+    password: admin123
+    username: Admin
+  readonly:
+    password: admin123
+    username: Admin
+  invalid:
+    username: fakeuser
+    password: wrongpass
