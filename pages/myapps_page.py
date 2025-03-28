@@ -5,4 +5,7 @@ class HomePage:
         self.page = page
 
     # Locators
-    MENU = "#body > div.topRow > div.connection_info"
+    MENU = '#body > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td:nth-child(1) > a:nth-child(1)'
+
+    def navigate(self, url: str):
+        self.page.goto(url)

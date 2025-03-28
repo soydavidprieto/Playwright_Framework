@@ -1,7 +1,7 @@
 users:
   default:
-    password: dprieto
-    username: m8+ta4ugavatHo
+    password: m8+ta4ugavatHo
+    username: dprieto
   invalid:
     username: fakeuser
     password: wrongpass

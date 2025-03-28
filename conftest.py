@@ -18,11 +18,12 @@ def context(browser):
     yield context
     context.close()
 
-@pytest.fixture(scope="function")
-def page(context) -> Page: # type: ignore
-    page = context.new_page()
-    yield page
-    page.close()
+@pytest.fixture(scope="session")
+def browser():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False, slow_mo=200)
+        yield browser
+        browser.close()
     
 @pytest.fixture(scope="function")
 def context(browser):
