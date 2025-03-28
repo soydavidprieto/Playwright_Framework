@@ -9,8 +9,8 @@ class LoginPage:
         self.page.goto(url)
 
     def fill_credentials(self, username: str, password: str):
-        self.page.fill("#username", username)
-        self.page.fill("#password", password)
+        self.page.fill("input[name='username']", username)
+        self.page.fill("input[name='password']", password)
 
     def submit(self):
-        self.page.click("[data-test='signin-submit']")
+        self.page.click("button[type='submit']")

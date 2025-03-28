@@ -24,4 +24,4 @@ def login(actor, username, password):
 
 @then("debería ver el dashboard")
 def see_dashboard(actor):
-    actor.should_see_that(ElementVisible("[data-test='sidenav-user-full-name']"))
+    actor.should_see_that(ElementVisible("div.oxd-topbar-header-title"))

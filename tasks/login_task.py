@@ -11,6 +11,6 @@ class Login:
     def perform_as(self, actor):
         page = actor.ability_to(BrowseTheWeb).page
         login_page = LoginPage(page)
-        login_page.navigate(settings.base_url + "/signin")
+        login_page.navigate(settings.base_url + "/")
         login_page.fill_credentials(self.username, self.password)
         login_page.submit()

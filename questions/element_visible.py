@@ -11,4 +11,5 @@ class ElementVisible:
             page.wait_for_selector(self.selector, timeout=5000)
             return page.is_visible(self.selector)
         except Exception:
+            page.screenshot(path="reports/failure.png")
             return False

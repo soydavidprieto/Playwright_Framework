@@ -1,11 +1,11 @@
 # tests/features/login.feature
-Feature: Login
+Feature: Login OrangeHRM
 
-  Scenario Outline: Usuario válido puede acceder al sistema
+  Scenario: Usuario válido puede acceder al sistema
     Given que el usuario accede a la página de login
-    When ingresa el usuario "<username>" y la contraseña "<password>"
+    When ingresa el usuario "Admin" y la contraseña "admin123"
     Then debería ver el dashboard
 
   Examples:
     | username | password  |
-    | Admin    | Admin123  |
+    | Admin    | admin123  |

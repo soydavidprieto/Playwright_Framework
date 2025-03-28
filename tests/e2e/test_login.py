@@ -6,5 +6,5 @@ from questions.element_visible import ElementVisible
 
 def test_user_can_login(page):
     user = Actor("Admin").can(BrowseTheWeb(page))
-    user.attempts_to(Login("Admin", "Admin123"))
-    user.should_see_that(ElementVisible("[data-test='sidenav-user-full-name']"))
+    user.attempts_to(Login("Admin", "admin123"))
+    user.should_see_that(ElementVisible("div.oxd-topbar-header-title"))
